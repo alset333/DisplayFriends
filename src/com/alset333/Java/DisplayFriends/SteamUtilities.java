@@ -1,5 +1,12 @@
 package com.alset333.Java.DisplayFriends;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import com.alset333.Java.DisplayFriends.exceptions.SteamException;
 import com.registry.RegStringValue;
 import com.registry.RegistryKey;
@@ -40,6 +47,43 @@ public class SteamUtilities {
 		valStr = regStr.getValue();  // Get the String-value from the RegStrValue
 		
 		return valStr;  // Return the string of the path
+	}
+	
+	public static ArrayList<String> getSteamLibraryFolders() throws SteamException {
+		String steamPath = SteamUtilities.getSteamInstallFolder();
+			
+		Path steamFolderListFilePath = Paths.get(steamPath, "steamapps", "libraryfolders.vdf");
+		File steamFolderListFile	 = steamFolderListFilePath.toFile();
+		
+		System.out.println(steamFolderListFile);
+		
+		Scanner steamFolderListScanner;
+		
+		try {
+			steamFolderListScanner = new Scanner(steamFolderListFile);	
+		} catch (FileNotFoundException e) {
+			throw new SteamException("Could not find \"libraryfolders.vdf\" file.");
+		}
+		
+		ArrayList<String> folders = new ArrayList<String>();
+		
+		folders.add(steamPath);
+		
+		int lineNum = 0;
+		while(steamFolderListScanner.hasNextLine()) {
+			String line = steamFolderListScanner.nextLine();
+			if (line.contains("\"" + String.valueOf(lineNum - 3) + "\"\t\t")) {
+				String splitLine = line.split("\"")[3].replace("\\\\", "\\");
+				folders.add(splitLine);
+			}
+			lineNum++;
+		}
+		
+		
+		steamFolderListScanner.close();
+		
+		return folders;
+		
 	}
 
 

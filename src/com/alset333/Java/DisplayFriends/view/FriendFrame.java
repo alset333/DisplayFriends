@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class FriendFrame extends Overlay {
 
-	public FriendFrame() {
+	public FriendFrame(String nikoPath) {
 		// See here about using images: https://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel
 
 		JPanel jp = new JPanel(new BorderLayout());
@@ -22,13 +22,26 @@ public class FriendFrame extends Overlay {
 		
 		
 		try {
-			BufferedImage myTestPicture;
-			myTestPicture = ImageIO.read(getClass().getResource("/images/test.bmp"));
-			JLabel picTestLabel = new JLabel(new ImageIcon(myTestPicture));
-			jp.add(picTestLabel, BorderLayout.NORTH);
+//			BufferedImage myTestPicture;
+//			myTestPicture = ImageIO.read(getClass().getResource("/images/test.bmp"));
+//			JLabel picTestLabel = new JLabel(new ImageIcon(myTestPicture));
+//			jp.add(picTestLabel, BorderLayout.NORTH);
 
 			BufferedImage myPicture;
-			myPicture = ImageIO.read(new File("D:\\Steam\\steamapps\\common\\OneShot\\Graphics\\Characters\\niko.png"));
+			System.out.println(nikoPath);
+			myPicture = ImageIO.read(new File(nikoPath));
+			
+			int DOWN = 0, LEFT = 1, RIGHT = 2, UP = 3;
+			
+			/////////////////////////////////////////
+			int direction = DOWN, walkCycleStep = 0;
+			/////////////////////////////////////////
+			
+			int indexX = walkCycleStep, indexY = direction;
+			int spriteWidth = 48, spriteHeight = 64;
+			
+			myPicture = myPicture.getSubimage(indexX * spriteWidth, indexY * spriteHeight, spriteWidth, spriteHeight);
+			
 			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 			jp.add(picLabel, BorderLayout.SOUTH);
 		} catch (IOException e) {
