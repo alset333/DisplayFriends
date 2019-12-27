@@ -11,20 +11,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.alset333.Java.DisplayFriends.exceptions.SteamException;
-import com.registry.RegStringValue;
-import com.registry.RegistryKey;
-import com.registry.RegistryValue;
-
-import sun.security.util.Length;
 
 
 
 public class SteamUtilities {
 	
 	static String key32Str, key64Str;
-	static RegistryKey localMachine, key32, key64;
-	static RegistryValue val32, val64, val;
-	static RegStringValue regStr;
+//	static RegistryKey localMachine, key32, key64;
+//	static RegistryValue val32, val64, val;
+//	static RegStringValue regStr;
 	static String valStr;
 	
 //	public static String getSteamInstallFolder() throws SteamException {
