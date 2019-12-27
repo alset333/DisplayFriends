@@ -30,7 +30,7 @@ public class Overlay extends JFrame implements MouseInputListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Hey don't poke me!");
 	}
 
 	@Override
@@ -38,13 +38,12 @@ public class Overlay extends JFrame implements MouseInputListener {
 		// TODO Auto-generated method stub
 		this.mousePressXLocal = e.getX();
 		this.mousePressYLocal = e.getY();
-		System.out.println(e);
+//		System.out.println(e);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -62,7 +61,7 @@ public class Overlay extends JFrame implements MouseInputListener {
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(e);
+//		System.out.println(e);
 		mouseDraggedXLocal = e.getX();
 		mouseDraggedYLocal = e.getY();
 		mouseDraggedXScreen = e.getXOnScreen();
