@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.alset333.Java.DisplayFriends.exceptions.SteamException;
+import com.alset333.Java.DisplayFriends.model.Friend;
 import com.alset333.Java.DisplayFriends.view.FriendFrame;
 
 public class DisplayFriends {
@@ -58,6 +59,13 @@ public class DisplayFriends {
 //		ff.getContentPane().add(new JTextField("text field north"), java.awt.BorderLayout.NORTH);
 //        ff.getContentPane().add(new JTextField("text field south"), java.awt.BorderLayout.SOUTH);
 
+		Friend test = new Friend("a", "b", Friend.NORTH);
+		
+		for (int i = 0; i < 10; i++) {
+			System.out.println(test.takeStep());
+			
+		}
+		
 		
 		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
