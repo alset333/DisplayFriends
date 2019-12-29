@@ -11,14 +11,29 @@ public class Friend {
 	/** Number of steps in the walk cycle */
 	public static final int STEPS = 4;
 
-	private String name;
-	private String filename;
+	private final String name;
+	private final String imagePath;
 	private int direction;
 	private int step;
 
-	public Friend(String name, String filename, int initialDirection) {
+	/**
+	 * Create a "Friend" with name and imagePath. Assumes facing SOUTH.
+	 * @param name Friend's name (e.g. Niko).
+	 * @param imagePath Path to the image with sprites (e.g. "X:\folder\niko.png").
+	 */
+	public Friend(String name, String imagePath) {
+		this(name, imagePath, SOUTH);
+	}
+	
+	/**
+	 * Create a "Friend" with name, imagePath, and initialDirection.
+	 * @param name Friend's name (e.g. Niko).
+	 * @param imagePath Path to the image with sprites (e.g. "X:\folder\niko.png").
+	 * @param initialDirection The direction for the character to face initially (e.g. Friend.NORTH).
+	 */
+	public Friend(String name, String imagePath, int initialDirection) {
 		this.name = name;
-		this.filename = filename;
+		this.imagePath = imagePath;
 		this.direction = initialDirection;
 		this.step = 0;
 
@@ -42,7 +57,7 @@ public class Friend {
 	public int getDirection()	{	return direction;	}
 	public int getStep()		{	return step;		}
 	public String getName()		{	return name;		}
-	public String getFilename() {	return filename;	}
+	public String getImagePath() {	return imagePath;	}
 
 	// Setters
 	public void setDirection(int direction) {	this.direction = direction;	}

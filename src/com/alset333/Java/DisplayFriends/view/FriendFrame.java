@@ -12,14 +12,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.alset333.Java.DisplayFriends.model.Friend;
+
 public class FriendFrame extends Overlay {
 
-	private String np;
+	private final String imagePath;
 	private JLabel picLabel;
 	int dir = 0;
 	
+	public FriendFrame(Friend friend) {
+		this.imagePath = friend.getImagePath();
+		
+	}
+	
 	public FriendFrame(String nikoPath) {
-		np = nikoPath;
+		imagePath = nikoPath;
 		
 		// See here about using images: https://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel
 
@@ -50,20 +57,20 @@ public class FriendFrame extends Overlay {
 			myPicture = myPicture.getSubimage(indexX * spriteWidth, indexY * spriteHeight, spriteWidth, spriteHeight);
 			
 			this.picLabel = new JLabel(new ImageIcon(myPicture));
-			jp.add(this.picLabel, BorderLayout.SOUTH);
+			add(this.picLabel, BorderLayout.SOUTH);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		add(jp);
+//		add(jp);
 	}
 	
 	public void faceTo(int direction) {
 		
 		BufferedImage pic = null;
 		try {
-			pic = ImageIO.read(new File(np));
+			pic = ImageIO.read(new File(imagePath));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
