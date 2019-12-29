@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import com.alset333.Java.DisplayFriends.exceptions.SteamException;
 import com.alset333.Java.DisplayFriends.view.FriendFrame;
 
@@ -57,7 +59,7 @@ public class DisplayFriends {
 //        ff.getContentPane().add(new JTextField("text field south"), java.awt.BorderLayout.SOUTH);
 
 		
-		ff.setDefaultCloseOperation(ff.EXIT_ON_CLOSE);
+		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ff.setVisible(true);
 		
