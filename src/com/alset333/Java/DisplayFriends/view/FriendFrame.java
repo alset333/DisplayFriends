@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import com.alset333.Java.DisplayFriends.model.Friend;
 
+@SuppressWarnings("serial")
 public class FriendFrame extends Overlay {
 
 	private final String imagePath;
@@ -45,6 +46,7 @@ public class FriendFrame extends Overlay {
 			System.out.println(nikoPath);
 			myPicture = ImageIO.read(new File(nikoPath));
 			
+			@SuppressWarnings("unused") // TODO this just keeps warnings away for now since these are being used like constants/reminders
 			int DOWN = 0, LEFT = 1, RIGHT = 2, UP = 3;
 			
 			/////////////////////////////////////////
@@ -76,7 +78,7 @@ public class FriendFrame extends Overlay {
 			e.printStackTrace();
 		}
 		
-		int DOWN = 0, LEFT = 1, RIGHT = 2, UP = 3;
+//		int DOWN = 0, LEFT = 1, RIGHT = 2, UP = 3;
 		
 		/////////////////////////////////////////
 		int walkCycleStep = 0;
@@ -98,29 +100,5 @@ public class FriendFrame extends Overlay {
 		
 	}
 	
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-		switch (dir) {
-		case 0:
-			dir = 1;
-			break;
-		case 1:
-			dir = 3;
-			break;
-		case 3:
-			dir = 2;
-			break;
-		case 2:
-			dir = 0;
-			break;
-
-		default:
-			break;
-		}
-		
-		this.faceTo(dir);
-	}
 
 }

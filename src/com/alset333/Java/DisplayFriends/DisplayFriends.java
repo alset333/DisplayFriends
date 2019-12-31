@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import com.alset333.Java.DisplayFriends.controller.OverlayMouseInputListener;
 import com.alset333.Java.DisplayFriends.exceptions.SteamException;
 import com.alset333.Java.DisplayFriends.model.Friend;
-import com.alset333.Java.DisplayFriends.view.FriendFrame;
 import com.alset333.Java.DisplayFriends.view.FriendPanel;
 import com.alset333.Java.DisplayFriends.view.Overlay;
 
@@ -63,17 +63,27 @@ public class DisplayFriends {
 //        ff.getContentPane().add(new JTextField("text field south"), java.awt.BorderLayout.SOUTH);
 
 		Friend niko = new Friend("Niko", nikoPath);
+
 		
 		FriendPanel fp;
+		Overlay ov = new Overlay();
 		try {
 			fp = new FriendPanel(niko);
 
-			Overlay ff = new Overlay();
-			ff.add(fp);
-			ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			ov.add(fp);
 			
-			ff.setVisible(true);
-			ff.pack();
+			OverlayMouseInputListener omil = new OverlayMouseInputListener(ov);
+//			ov.addMouseListener(omil);
+//			ov.addMouseMotionListener(omil);
+			
+			fp.addMouseListener(omil);
+			fp.addMouseMotionListener(omil);
+			
+			
+			ov.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			ov.setVisible(true);
+			ov.pack();
 			
 			
 		} catch (IOException e) {
